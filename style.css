@@ -130,10 +130,11 @@ body {
     flex-direction: column;
 }
 
-.result-middle-850 {
+.result-middle-small {
     display: none;
     align-items: center;
     flex-direction: column;
+    z-index: 3;
 }
 
 .verdict {
@@ -283,6 +284,10 @@ body {
 }
 
 @media only screen and (max-width: 850px) {
+    .result {
+        margin-top: 25px;
+    }
+
     .result-middle {
         display: none;
     }
@@ -301,11 +306,23 @@ body {
     .rules-button {
         right: calc(50% - 75px);
     }
+
+    .result {
+        margin-top: 0px;
+    }
+
+    .result-middle-small {
+        margin-top: -25px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
     .select-object {
         margin-top: 50px;
-        transform: scale(0.7);
+        transform: scale(0.65);
+    }
+
+    .result {
+        width: 130%;
     }
 }

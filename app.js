@@ -37,14 +37,19 @@ $('.icon-container').click(e => {
         let currentWinner = findWinner(userPick, computerPick);
         $('.select-object').css({'display': 'none'});
         $('.result').css({'display': 'flex'});
+        if (window.innerWidth <= 850) {
+            $('.result-middle-small').css({'display': 'flex'});
+        }
         $('.user-pick').html(`<h2 class="user-pick-title">YOU PICKED</h2>
         ${userPick === 'paper-container' ? paperHTML : userPick === 'scissors-container' ? scissorsHTML : rockHTML}`);
         $('.computer-pick').html(`<h2 class="computer-pick-title">THE HOUSE PICKED</h2>
         ${computerPick === 'paper-container' ? paperHTML : computerPick === 'scissors-container' ? scissorsHTML : rockHTML}`);
-        $('.icon-container').css({'position': 'static', 'transform': 'scale(1.75)', 'margin-top': '135px'});
+        $('.icon-container').css({'position': 'static', 'margin-top': '135px'});
+        window.innerWidth <= 850 ? $('.icon-container').css({'transform': 'scale(1.25)'}) : $('.icon-container').css({'transform': 'scale(1.75)'});
         $('.verdict').text(currentWinner == 'user' ? 'YOU WIN' : currentWinner == 'computer' ? 'YOU LOSE' : 'YOU TIED');
         currentWinner == 'user' && currentScore++;
         $('.score').text(currentScore);
+        console.log($('.' + firstClass).offset());
 
         if (currentWinner == 'computer') {
             $('.outer-ring').css({'left': '788px'});
@@ -71,6 +76,7 @@ $('.icon-container').click(e => {
 $('.play-again-button').click(() => {
     $('.select-object').css({'display': 'flex'});
     $('.result').css({'display': 'none'});
+    $('.result-middle-small').css({'display': 'none'});
     userPick = '';
     computerPick = choices[Math.floor(Math.random() * choices.length)];
     $('.icon-container').css({'opacity': '1', 'transform': 'scale(1)', 'position': 'absolute', 'margin-top': 'initial'});
